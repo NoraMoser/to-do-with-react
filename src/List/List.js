@@ -1,13 +1,14 @@
 import React from 'react';
+import './List.css';
 
-const list = () => {
+const item = ( props ) => {
 
-    
-    
-    return <div>
-        <input className='input'></input>
-        
+    return (
+        <div>
+        <p onClick={props.click}>{props.name}</p>
+        {/* <input type='text' onChange={props.changed} /> */}
         </div>
-};
+        )
+    };
 
-export default list;
+export default item;
