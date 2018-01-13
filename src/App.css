@@ -2,3 +2,11 @@
   text-align: center;
 }
 
+input {
+  border: 2px black solid;
+  height: 30px;
+  width: 120px;
+  font-size: 1em;
+  font-weight: bold;
+}
+

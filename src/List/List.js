@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import './List.css'
+import './List.css';
 
 // Technically not best practice to have Components other than the main one or where it's not necessary
 class List extends Component {

@@ -59,7 +59,7 @@ class App extends Component {
 
     // filter is getting each item from the this.state and performing an action on them
     var filteredItems = this.state.items.filter(function (item) {
-      
+
       // return the item.key if there is not a key
       return (item.key !== key);
     });
@@ -71,6 +71,17 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      backgroundColor: 'lightblue',
+      border: '2px black solid',
+      padding: '7px',
+      width: '50px',
+      marginLeft: '3px',
+      boxShadow: '2px 1px gray',
+      fontWeight: 'bold',
+      font: '1px'
+    };
   
     return (
      
@@ -79,9 +90,9 @@ class App extends Component {
         <Cockpit />
         <div className="header">
           <form onSubmit={this.addItemHandler}>
-            <input ref={(a) => this._inputElement = a} placeholder="enter task">
+            <input ref={(a) => this._inputElement = a} placeholder="items">
             </input>
-            <button type="submit">add</button>
+            <button style={style} type="submit">add</button>
           </form>
         </div>
         <List 
