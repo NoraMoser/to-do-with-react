@@ -5,28 +5,31 @@ import Cockpit from './Cockpit/Cockpit';
 
 class App extends Component {
 
-  
+  // This is so the "this" keyword functions properly. According to other tutorials, it's not necessary.  State is a keyword in React so it should work without the "this" before it.  
   constructor(props, context) {
     super(props, context);
 
     this.state = {
       items: []
     };
- 
+
+    
     this.addItemHandler = this.addItemHandler.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
   }
 
-  addItemHandler(e) {
+  // Handler is a common term in React, but not required and aarow functions are best practice.
+  addItemHandler = (e) => {
     
     var itemArray = this.state.items;
     
+    // This says if the input value isn't nothing, add it to the itemArray.
      if (this._inputElement.value !== "") {
        itemArray.unshift({
            text: this._inputElement.value,
            key: Date.now()
        });
-    
+    // setState is a keyword that makes it possible to change the original state.
        this.setState({
          items: itemArray
        });
@@ -36,37 +39,14 @@ class App extends Component {
     
      console.log(itemArray);
       
+    //  Default refreshes the page and clears it each time- this prevents that 
      e.preventDefault();
 
      }
-  // state = {
-  //   items: [
-  //     {id: 'dsf', name: 'Butter'},
-  //     {id: 'sdf', name: 'Milk'}
-  //   ],
-    
-  // }
+  
 
 
-
-  // addItemHandler = (event, id) => {
-  //   const itemIndex = this.state.items.findIndex(i => {
-  //     return i.id === id;
-  //   });
-
-  //   const item = {
-  //     ...this.state.items[itemIndex]
-  //   };
-
-    // const item = Object.assign({}, this.state.items[itemIndex]);
-
-  //   item.name = event.target.value;
-
-  //   const items = [...this.state.items];
-  //   items[itemIndex] = item;
-
-  //   this.setState({items: items})
-  // }
+// This way works too with slight reconfiguration, so I'm leaving it for reference
 
   // deleteItemHandler = (itemIndex) => {
     // const items = this.state.items.slice();
@@ -76,34 +56,25 @@ class App extends Component {
   // }
 
   deleteItem(key) {
+
+    // filter is getting each item from the this.state and performing an action on them
     var filteredItems = this.state.items.filter(function (item) {
+      
+      // return the item.key if there is not a key
       return (item.key !== key);
     });
    
+    // change the original state so now the items are the filteredItems from above
     this.setState({
       items: filteredItems
     });
   }
 
-  
-
-
-//   onEnter = (event) => {
-//     event.preventDefault();
-//     var title = this.event.value;
-//     console.log(title);
-    
-// }
-
-
-
-
-
   render() {
-
-    
+  
     return (
      
+      // This is the JSX code (<List is from List.js and <Cockpit is from Cockpit.js)
       <div className="App">
         <Cockpit />
         <div className="header">
@@ -113,25 +84,13 @@ class App extends Component {
             <button type="submit">add</button>
           </form>
         </div>
-        {/* <input type="text" onChange={this.addItemHandler} value={this.state.items.name}/>
-        <button type="button" onClick={this.onEnter.bind(this)} className="btn">Save</button>
-        
-
-        {this.state.items.map((item, index) => {
-          return <List 
-          click={() => this.deleteItemHandler(index)}
-          name={item.name}
-          key={item.id}
-          changed={this.nameChangeHandler}/>
-        })} */}
         <List 
         entries={this.state.items}
         delete={this.deleteItem}
         />
-        
       </div>
     );
   }
 }
-
+// Export the class we just created
 export default App;
