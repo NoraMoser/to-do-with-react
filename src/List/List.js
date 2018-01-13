@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import './List.css'
 
+// Technically not best practice to have Components other than the main one or where it's not necessary
 class List extends Component {
  constructor(props, context) {
    super(props, context);
@@ -10,16 +11,17 @@ class List extends Component {
 
    this.createTasks = this.createTasks.bind(this);
  }
-
+// So we can add delete to the createTasks which we will put in the render
  delete(key) {
     this.props.delete(key);
   }
-
+// Tells us what to create with the JSX when we put it in the render and then call it over in App.js
  createTasks(item) {
    return <li onClick={() => this.delete(item.key)} 
    key={item.key}>{item.text}</li>
  }
 
+//  This is what appears when <List> is used in the JSX on App.js
  render() {
    var todoEntries = this.props.entries;
    var listItems = todoEntries.map(this.createTasks);
@@ -33,15 +35,3 @@ class List extends Component {
 };
 
 export default List;
-
-// const item = ( props ) => {
-
-//     return (
-//         <div>
-//         <p onClick={props.click}>{props.name}</p>
-        {/* <input type='text' onChange={props.changed} /> */}
-//         </div>
-//         )
-//     };
-
-// export default item;
