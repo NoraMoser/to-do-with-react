@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import './List.css';
+import { connect } from 'react-redux'
 
 // Technically not best practice to have Components other than the main one or where it's not necessary
 class List extends Component {
@@ -34,4 +35,16 @@ class List extends Component {
  }
 };
 
-export default List;
+const mapStateToProps = state => {
+    return {
+        name: state.items
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onName: () => dispatch({type: 'NAME'})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
