@@ -73,8 +73,9 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'lightblue',
-      border: '2px black solid',
+      backgroundColor: 'white',
+      opacity: '0.9',
+      border: '1px black solid',
       padding: '7px',
       width: '50px',
       marginLeft: '3px',
