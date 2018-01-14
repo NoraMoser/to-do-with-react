@@ -1,4 +1,7 @@
 .theList {
     font-size: 2em;
     list-style: none;
+    color: white;
+    opacity: 0.5;
+    font-family: 'Permanent Marker', cursive;
 }
