@@ -24,11 +24,11 @@ class List extends Component {
 
 //  This is what appears when <List> is used in the JSX on App.js
  render() {
-   var todoEntries = this.props.entries;
+   var todoEntries = this.props.name;
    var listItems = todoEntries.map(this.createTasks);
 
    return (
-     <ul onClick={this.props.click} className="theList">
+     <ul onClick={this.props.onAddingName} className="theList">
          {listItems}
      </ul>
    );
@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onName: () => dispatch({type: 'NAME'})
+        onAddingName: () => dispatch({type: 'ADD_NAME', value: ''})
     }
 }
 

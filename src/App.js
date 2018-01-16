@@ -18,6 +18,7 @@ class App extends Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
 
+  
   // Handler is a common term in React, but not required and aarow functions are best practice.
   addItemHandler = (e) => {
     
@@ -70,6 +71,8 @@ class App extends Component {
     });
   }
 
+  
+
   render() {
 
     const style = {
@@ -91,7 +94,7 @@ class App extends Component {
         <Cockpit />
         <div className="header">
           <form onSubmit={this.addItemHandler}>
-            <input ref={(a) => this._inputElement = a} placeholder="items">
+            <input id="value" ref={(a) => this._inputElement = a} placeholder="items">
             </input>
             <button style={style} type="submit">add</button>
           </form>
