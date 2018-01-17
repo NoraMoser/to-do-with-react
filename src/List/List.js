@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import './List.css';
 import { connect } from 'react-redux'
+import * as actionTypes from '../store/actions'
 
 // Technically not best practice to have Components other than the main one or where it's not necessary
 class List extends Component {
@@ -43,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddingName: () => dispatch({type: 'ADD_NAME', value: ''})
+        onAddingName: () => dispatch({type: actionTypes.ADD_NAME, value: ''})
     }
 }
 
